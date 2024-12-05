@@ -1,0 +1,44 @@
+research_stock_task:
+  description: >
+    For a given ticker: {ticker} fetch the data from yfinance and return data to the next agent
+    Make sure you find any interesting and relevant information given
+    the current year is 2024.
+  expected_output: >
+    Ticket KPIs:
+      - Ticker Symbol
+      - Company name
+      - Current Price
+      - 52-Week High
+      - 52-Week Low
+      - Market Cap
+      - P/E Ratio
+      - P/B Ratio
+      - Debt-to-equity Ration
+      - Current Ratio
+      - Dividend Yield (%)
+      - 5-Year revenu growth rate (%)
+      - Free cash flow
+      - Profit Margin
+      - Operating margin
+      - Earnings Growth
+      - Revenue Growth
+      - Analyst target price
+      - Beta
+      - 5-Year Average Return on Equity (%)
+  agent: stock_researcher
+
+analyse_ticker_task:
+  description: >
+    first you get warren buffett's investment principles by using the 
+    file read tool
+    then you provide a comprehensive analysis of the ticker
+    write short and concise the pros why warren buffett would invest in
+    this company and the cons why he wouldn't
+    then summarize the company evaluation and provide a recommendation
+    then you give a warren buffet buy recomendation from 0 to 10 (10 is best)
+  expected_output: >
+    - Pros why Warren Buffett would invest in this company
+    - Cons why Warren Buffett wouldn't invest in this company
+    - Company Evaluation Summary
+    - Warren Buffet Buy Recommendation
+  agent: senior_stock_analyst

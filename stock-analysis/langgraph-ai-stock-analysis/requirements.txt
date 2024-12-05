@@ -1,0 +1,5 @@
+yfinance
+langchain-community
+langchain-openai
+langchain
+openai

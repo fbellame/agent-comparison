@@ -1,0 +1,23 @@
+[project]
+name = "crew_ai_stock_analysis"
+version = "0.1.0"
+description = "crew-ai-stock-analysis using crewAI"
+authors = [{ name = "Farid Bellameche", email = "faridautomatic@gmail.com" }]
+requires-python = ">=3.10,<=3.13"
+dependencies = [
+    "crewai[tools]>=0.74.2,<1.0.0",
+    "crewai[agentops]",
+    "yfinance>=0.2.50,<0.3.0",
+    "agentops"
+]
+
+[project.scripts]
+crew_ai_stock_analysis = "crew_ai_stock_analysis.main:run"
+run_crew = "crew_ai_stock_analysis.main:run"
+train = "crew_ai_stock_analysis.main:train"
+replay = "crew_ai_stock_analysis.main:replay"
+test = "crew_ai_stock_analysis.main:test"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
