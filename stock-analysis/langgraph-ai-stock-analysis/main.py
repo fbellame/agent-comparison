@@ -12,14 +12,12 @@ os.environ["LANGCHAIN_PROJECT"] = "stock_analysis"
 
 load_dotenv()
 
+# Define tools
 file_management_fools = FileManagementToolkit(
     root_dir=str("./"),
     selected_tools=["read_file", "write_file", "list_directory"],
 ).get_tools()
 read_tool, write_tool, list_tool = file_management_fools
-
-# Define tools
-
 
 # Set up the agent
 def setup_agent():

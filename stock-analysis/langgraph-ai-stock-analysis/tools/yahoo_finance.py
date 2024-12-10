@@ -3,12 +3,12 @@ from langchain_core.tools import tool
 import yfinance as yf
 
 @tool
-def yahoo_finance_tool(ticker_sombol: str) -> dict:
+def yahoo_finance_tool(ticker_symbol: str) -> dict:
     """
     Input: Ticker symbol of a stock, it will return stock data
     """
     # Fetch the stock data
-    stock = yf.Ticker(ticker_sombol)
+    stock = yf.Ticker(ticker_symbol)
     
     # Get the info dictionary
     info = stock.info
@@ -30,7 +30,7 @@ def yahoo_finance_tool(ticker_sombol: str) -> dict:
     
     # Prepare the analysis results
     analysis = {
-        'Ticker Symbol': ticker_sombol,
+        'Ticker Symbol': ticker_symbol,
         'Company Name': info.get('longName', 'N/A'),
         'Current Price': info.get('currentPrice', 'N/A'),
         '52-Week High': round(week_52_high, 2),
@@ -56,5 +56,5 @@ def yahoo_finance_tool(ticker_sombol: str) -> dict:
         if analysis[key] != 'N/A':
             analysis[key] = round(analysis[key] * 100, 2)
     
-    return analysis
+    return f"{analysis}"
 
