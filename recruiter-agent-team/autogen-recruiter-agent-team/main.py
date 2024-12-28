@@ -12,6 +12,7 @@ import time
 import autogen
 import json
 import pandas as pd
+import os
 
 llm_config = {
     "model": "gpt-4o-mini",
@@ -96,8 +97,11 @@ register_function(
     description="Send an email",  # A description of the tool.
 )
 
-job_description_file = "job_description_AI_specialist.md"
-resume_file = "resume_farid_bellameche.md"
+jd_path = "/media/farid/data1/projects/agent-comparison/recruiter-agent-team/autogen-recruiter-agent-team/data/jd"
+jd_files = [os.path.join(jd_path, f) for f in os.listdir(jd_path)]
+
+resume_path = "/media/farid/data1/projects/agent-comparison/recruiter-agent-team/autogen-recruiter-agent-team/data/resume"
+resumes_files = [os.path.join(resume_path, f) for f in os.listdir(resume_path)]
 
 # Get the current date
 current_date = datetime.now().date()
@@ -114,9 +118,10 @@ user_message = f"""
 
         Current date is {current_date}
 
-        1) Analyze the resume against the provided job requirements. Be strick about minimum experience
-         - Folder to find job description and remuse is ./autogen-recruiter-agent-team/data.
-         - Use read_file tool to read {resume_file} and {job_description_file}.
+        1) Analyze the resumes against the provided job descriptions. Be strick about minimum experience. Iterate over all the resumes
+         - Job description file are {jd_files}
+         - Candidate resume files are {resumes_files}
+         - Use read_file tool to read resumes and job description.
          - Be lenient with AI/ML candidates who show strong potential.
          - Consider project experience as valid experience
          - Value hands-on experience with key technologies

@@ -3,12 +3,10 @@
 ---
 
 ## **Contact Information**
-- **Name:** Farid Bellameche
+- **Name:** Fred Bellameche
 - **Email:** faridautomatic@gmail.com
 - **Phone:** +1 (514) 123-4567
-- **LinkedIn:** [linkedin.com/in/faridbellameche](https://linkedin.com/in/faridbellameche)
-- **GitHub:** [github.com/faridbellameche](https://github.com/faridbellameche)
-- **Portfolio:** [faridbellameche.com](https://faridbellameche.com)
+- **LinkedIn:** [linkedin.com/in/faridbellameche](https://linkedin.com/in/fredbellameche)
 
 ---
 
