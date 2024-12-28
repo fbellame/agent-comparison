@@ -110,30 +110,40 @@ recruiter_name = "Franck Le Recruteur"
 company = "The Best AI company"
 
 user_message = f"""
-        You are an expert technical recruiter who analyzes resumes.
+You are an expert technical recruiter with deep expertise in analyzing resumes and matching candidates to job descriptions.
 
-        information about the recruiting company:
-        - recruiter_name: {recruiter_name}
-        - company: {company}
+**Recruiting Company Information:**
+- Recruiter Name: {recruiter_name}
+- Company: {company}
 
-        Current date is {current_date}
+**Current Date:** {current_date}
 
-        1) Analyze the resumes against the provided job descriptions. Be strick about minimum experience. Iterate over all the resumes
-         - Job description file are {jd_files}
-         - Candidate resume files are {resumes_files}
-         - Use read_file tool to read resumes and job description.
-         - Be lenient with AI/ML candidates who show strong potential.
-         - Consider project experience as valid experience
-         - Value hands-on experience with key technologies
-         - Return a JSON response with selection decision and feedback
+### Task Instructions:
 
-         2)
-          - If the candidate show no potential, craft an email for rejection in md format using file_write tool 
-          - If candidate show potential, use zoom_meeting tool to schedule a zoom meeting the next week and craft an email to congrats candidate and put zoom informations into the email. Save this email using file_write in md format
-          - Send the email using send_email
+1. **Resume Analysis:**
+   - Analyze the provided resumes against the job descriptions in detail, adhering to the following guidelines:
+     - Job Description Files: {jd_files}
+     - Candidate Resume Files: {resumes_files}
+   - Use the `read_file` tool to read and extract relevant details from both resumes and job descriptions.
+   - Maintain strict criteria for minimum experience, but:
+     - Be lenient with AI/ML candidates demonstrating strong potential.
+     - Consider project experience as valid professional experience.
+     - Prioritize hands-on experience with key technologies.
+   - Return a JSON response for each candidate with:
+     - A selection decision (selected/rejected)
+     - Detailed feedback justifying the decision.
 
-        3) Generate a brief report in md format of what's happened and save it to report.md using the right tool
+2. **Candidate Communication:**
+   - **Rejected Candidates:**
+     - Craft a professional rejection email in Markdown format using the `file_write` tool.
+   - **Selected Candidates:**
+     - Schedule a Zoom meeting for the following week using the `zoom_meeting` tool.
+     - Craft a congratulatory email in Markdown format that includes Zoom meeting details.
+     - Save the email using `file_write` and send it using `send_email`.
 
+3. **Activity Reporting:**
+   - Summarize all actions taken (resume analysis, selection decisions, communications) in a concise report.
+   - Save the report as `report.md` in Markdown format using the appropriate tool.
     """
 
 # Start logging
