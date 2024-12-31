@@ -9,7 +9,6 @@ from autogen_agentchat.ui import Console
 from autogen_ext.models.openai import OpenAIChatCompletionClient
 
 # Tool imports
-#from client import get_tools
 from tools.zoom_meeting import schedule_zoom_meeting
 from tools.gmail_email import send_email
 from tools.file_system_tools import read_file, write_file
@@ -47,13 +46,10 @@ def format_prompt(prompt: str, variables: dict) -> str:
 
 async def main() -> None:
     
-    def read_file(file_path: str) -> str:
-      with open(file_path, "r") as file:
-          return file.read()
-
-    tools = [read_file, write_file, send_email,schedule_zoom_meeting]
+    # 0. Get tools
+    tools = [read_file, write_file, send_email, schedule_zoom_meeting]
     
-    # Create the recruiter agent
+    # 1. Create the recruiter agent
     recruiter_agent = AssistantAgent(
         name="recruiter_agent",
         model_client=OpenAIChatCompletionClient(
@@ -67,30 +63,31 @@ async def main() -> None:
         tools=tools,
     )
 
-    # Create the agent team
+    # 2. Create the agent team
     agent_team = RoundRobinGroupChat([recruiter_agent], max_turns=10)
 
-    # 4. Load and Format Prompt
+    # 3. Load and Format Prompt
     prompt_path = "/media/farid/data1/projects/agent-comparison/recruiter-agent-team/prompt/user_message.txt"
     vars_path = "/media/farid/data1/projects/agent-comparison/recruiter-agent-team/prompt/variables.json"
 
     raw_prompt = load_prompt(prompt_path)
     variables = load_vars(vars_path)
 
-    # 5. Collect File Lists
+    # 4. Collect File Lists
     jd_files = get_file_list_from_path(variables["JD_PATH"])
     resume_files = get_file_list_from_path(variables["RESUME_PATH"])
 
-    # Add dynamic variables
+    # 5. Add dynamic variables
     variables.update({
         "jd_files": jd_files,
         "resume_files": resume_files,
         "current_date": datetime.now().date(),
     })
 
+    # 5. Generate prompt with variables
     task_message = format_prompt(raw_prompt, variables)    
 
-    # Run the team and stream messages
+    # 6. Run the team and stream messages
     stream = agent_team.run_stream(task=task_message)
     await Console(stream)
 
