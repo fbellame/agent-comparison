@@ -6,6 +6,7 @@
 
 recruiter-agent-team/logs.db
 recruiter-agent-team/autogen-recruiter-agent-team/logs.db
+recruiter-agent-team/data/tmp
 
 **/*.db
 

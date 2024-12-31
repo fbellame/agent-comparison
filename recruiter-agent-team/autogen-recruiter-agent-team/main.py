@@ -22,17 +22,12 @@ import autogen.runtime_logging
 # Tool imports
 from tools.zoom_meeting import schedule_zoom_meeting
 from tools.gmail_email import send_email
+from tools.file_system_tools import read_file, write_file
 
 # -------------------------------
 # 1. Configuration & Environment
 # -------------------------------
 load_dotenv()  # Load environment variables if needed
-
-JD_PATH = os.getenv("JD_PATH", "/media/farid/data1/projects/agent-comparison/recruiter-agent-team/autogen-recruiter-agent-team/data/jd")
-RESUME_PATH = os.getenv("RESUME_PATH", "/media/farid/data1/projects/agent-comparison/recruiter-agent-team/autogen-recruiter-agent-team/data/resume")
-
-RECRUITER_NAME = os.getenv("RECRUITER_NAME", "Franck Le Recruteur")
-COMPANY = os.getenv("COMPANY", "The Best AI company")
 
 LLM_CONFIG = {
     "model": os.getenv("MODEL_NAME", "gpt-4o-mini"),
@@ -42,16 +37,6 @@ LLM_CONFIG = {
 # -------------------------------
 # 2. Utility Functions
 # -------------------------------
-def read_file(file_path: str) -> str:
-    """Reads and returns the content of a file."""
-    with open(file_path, "r") as file:
-        return file.read()
-
-def write_file(file_path: str, content: str) -> None:
-    """Writes content to a file."""
-    with open(file_path, "w") as file:
-        file.write(content)
-
 def get_file_list_from_path(path: str) -> list[str]:
     """Returns a list of full file paths from a directory."""
     return [
@@ -59,6 +44,20 @@ def get_file_list_from_path(path: str) -> list[str]:
         for f in os.listdir(path)
         if os.path.isfile(os.path.join(path, f))
     ]
+
+def load_prompt(file_path: str) -> str:
+    """Loads a text prompt from a file."""
+    with open(file_path, 'r') as file:
+        return file.read()
+
+def load_vars(file_path: str) -> dict:
+    """Loads variables from a JSON file."""
+    with open(file_path, 'r') as file:
+        return json.load(file)
+
+def format_prompt(prompt: str, variables: dict) -> str:
+    """Formats a prompt by replacing placeholders with variable values."""
+    return prompt.format(**variables)
 
 def start_logging(dbname: str = "logs.db") -> int:
     """
@@ -188,51 +187,28 @@ def main():
     # 3. Register Tools
     register_all_tools(assistant, user_proxy)
 
-    # 4. Collect File Lists
-    jd_files = get_file_list_from_path(JD_PATH)
-    resume_files = get_file_list_from_path(RESUME_PATH)
+    # 4. Load and Format Prompt
+    prompt_path = "/media/farid/data1/projects/agent-comparison/recruiter-agent-team/prompt/user_message.txt"
+    vars_path = "/media/farid/data1/projects/agent-comparison/recruiter-agent-team/prompt/variables.json"
 
-    # 5. Build User Instruction (User->Assistant)
-    current_date = datetime.now().date()
-    user_message = f"""
-    You are an expert technical recruiter with deep expertise in analyzing resumes and matching candidates to job descriptions.
+    raw_prompt = load_prompt(prompt_path)
+    variables = load_vars(vars_path)
 
-    **Recruiting Company Information:**
-    - Recruiter Name: {RECRUITER_NAME}
-    - Company: {COMPANY}
+    # 5. Collect File Lists
+    jd_files = get_file_list_from_path(variables["JD_PATH"])
+    resume_files = get_file_list_from_path(variables["RESUME_PATH"])
 
-    **Current Date:** {current_date}
+    # Add dynamic variables
+    variables.update({
+        "jd_files": jd_files,
+        "resume_files": resume_files,
+        "current_date": datetime.now().date(),
+    })
 
-    ### Task Instructions:
-
-    1. **Resume Analysis:**
-       - Analyze the provided resumes against the job descriptions in detail, adhering to the following guidelines:
-         - Job Description Files: {jd_files}
-         - Candidate Resume Files: {resume_files}
-       - Use the `read_file` tool to read and extract relevant details from both resumes and job descriptions.
-       - Maintain strict criteria for minimum experience, but:
-         - Be lenient with AI/ML candidates demonstrating strong potential.
-         - Consider project experience as valid professional experience.
-         - Prioritize hands-on experience with key technologies.
-       - Return a JSON response for each candidate with:
-         - A selection decision (selected/rejected)
-         - Detailed feedback justifying the decision.
-
-    2. **Candidate Communication:**
-       - **Rejected Candidates:**
-         - Craft a professional rejection email in Markdown format using the `file_write` tool.
-       - **Selected Candidates:**
-         - Schedule a Zoom meeting for the following week using the `zoom_meeting` tool.
-         - Craft a congratulatory email in Markdown format that includes Zoom meeting details.
-         - Save the email using `file_write` and send it using `send_email`.
-
-    3. **Activity Reporting:**
-       - Summarize all actions taken (resume analysis, selection decisions, communications) in a concise report.
-       - Save the report as `report.md` in Markdown format using the appropriate tool.
-    """
+    formatted_prompt = format_prompt(raw_prompt, variables)
 
     # 6. Begin Chat
-    chat_result = user_proxy.initiate_chat(assistant, message=user_message)
+    chat_result = user_proxy.initiate_chat(assistant, message=formatted_prompt)
     print("Chat cost info:", chat_result.cost)
 
     print(f"--- {time.time() - start_time} seconds ---")

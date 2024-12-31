@@ -1,0 +1,5 @@
+autogen-agentchat==0.4.0.dev11
+autogen-ext[openai]==0.4.0.dev11
+pandas==2.2.3
+Markdown==3.7
+python-dotenv==1.0.1
