@@ -18,11 +18,6 @@ from utils import format_prompt, load_prompt, load_vars
 # -------------------------------
 load_dotenv()  # Load environment variables if needed
 
-LLM_CONFIG = {
-    "model": os.getenv("MODEL_NAME", "gpt-4o-mini"),
-    "cache_seed": None,
-}
-
 async def main() -> None:
     
     # 0. Get tools
@@ -40,14 +35,17 @@ async def main() -> None:
             "when the task is done."
         ),
         tools=tools,
-    )
+    )   
 
     # 2. Create the agent team
     agent_team = RoundRobinGroupChat([recruiter_agent], max_turns=10)
 
     # 3. Load and Format Prompt
-    prompt_path = "/media/farid/data1/projects/agent-comparison/recruiter-agent-team/prompt/user_message.txt"
-    vars_path = "/media/farid/data1/projects/agent-comparison/recruiter-agent-team/prompt/variables.json"
+    script_dir = os.path.dirname(os.path.abspath(__file__))  # Get the directory of this script
+    prompt_dir = os.path.join(script_dir, '..', 'prompt')  # Prompt folder is one level up
+
+    prompt_path = os.path.join(prompt_dir, "user_message.txt")
+    vars_path = os.path.join(prompt_dir, "variables.json")
 
     raw_prompt = load_prompt(prompt_path)
     variables = load_vars(vars_path)
@@ -55,6 +53,7 @@ async def main() -> None:
     # 4. Add dynamic variables
     variables.update({
         "current_date": datetime.now().date(),
+        "location": "Montreal"
     })
 
     # 5. Generate prompt with variables

@@ -1,4 +1,3 @@
-import os
 import json
 
 def load_prompt(file_path: str) -> str:
