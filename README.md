@@ -2,7 +2,7 @@
 
 <br>
 
-![Introduction to Agent Frameworks](images/mini-agent-comp.png)
+[![Introduction to Agent Frameworks](images/mini-agent-comp.png)](https://www.youtube.com/@faridautomatic)
 
 ## Understanding the rise of Agent Frameworks in 2025
 
@@ -110,7 +110,7 @@ To ensure a fair evaluation, we will implement the same use case across all thre
 
 This approach allows us to directly compare their capabilities, development patterns, and performance while solving identical requirements. By maintaining consistent testing conditions, we can effectively highlight each framework's strengths and limitations.
 
-![Use case](images/cas-utilisation.png)
+[![Use case](images/cas-utilisation.png)](https://youtube.com/clip/UgkxEY6keXam1mYTpz1jvvUv_X6V5om6FL0s?si=y9Uus_NOomiX5rOb)
 
 #### Objective
 To provide a **rating (1-10)** for a stock by combining:
@@ -172,7 +172,7 @@ To provide a **rating (1-10)** for a stock by combining:
 
 **Use case diagram**
 
-![CrewAI use case](images/crewai-usecase.png)
+[![CrewAI use case](images/crewai-usecase.png)](https://youtube.com/clip/UgkxA25HzKdng8tkAmTCltpyTg5l9Ij8_Mna?si=rio23AVh13ZlBKnZ)
 
 **Evaluation**
 
