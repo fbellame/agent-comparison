@@ -294,7 +294,7 @@ For further insights, watch the video:
  - [3 - AutoGen](insert_video_link)
  - [4 - Final comparison](insert_video_link)
 
-Access the full code on [GitHub]()
+Access the full code on [GitHub](https://github.com/fbellame/agent-comparison/tree/master/stock-analysis)
 
 ## More about me
 
