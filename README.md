@@ -185,7 +185,7 @@ To provide a **rating (1-10)** for a stock by combining:
 
 ### Autogen
 
-![Overview of QAI Framework](images/autogen-logo.png)
+[![Overview of QAI Framework](images/autogen-logo.png)](https://microsoft.github.io/autogen/0.2/)
 
 [AutoGen](https://microsoft.github.io/autogen/0.2/) is a popular open source Agent framework backed by Microsoft, with more than 36k ⭐ on [gitHub](https://github.com/microsoft/autogen): 
 
@@ -216,7 +216,7 @@ To provide a **rating (1-10)** for a stock by combining:
 
 **Use case diagram**
 
-![AutoGen use case](images/autogen-usecase.png)
+[![AutoGen use case](images/autogen-usecase.png)](https://youtube.com/clip/UgkxSdZERvmjX7tLQ2-0rFOyV7cgOBaZgJQ8?si=c7OjzYkz7bRUMwrO)
 
 **Evaluation**
 - **Ease of Use**: ⭐⭐⭐ Although it remains a developer-focused tool, it uses simple design patterns for implementation. 
@@ -228,11 +228,11 @@ To provide a **rating (1-10)** for a stock by combining:
 
 ### **LangGraph Framework**
 
-![LangGraph logo](images/langgraph-logo.png)
+[![LangGraph logo](images/langgraph-logo.png)](https://www.langchain.com/langgraph)
 
 [LangGraph](https://www.langchain.com/langgraph) is an open-source orchestration framework designed for building stateful, multi-agent applications with Large Language Models (LLMs). It offers enhanced control over agent workflows, enabling the development of complex, reliable, and fault-tolerant AI systems. It has more than 7k ⭐ on [gitHub](https://github.com/langchain-ai/langgraph): 
 
-- Based on the popular [LanChain LLM framework](https://www.microsoft.com/en-us/research/people/chiw/) 
+- Based on the popular [LanChain LLM framework](https://www.langchain.com/) 
 
 ### Key Features of LangGraph
 
@@ -255,7 +255,7 @@ To provide a **rating (1-10)** for a stock by combining:
 
 **Use case diagram**
 
-![LangGraph use case](images/langgraph-usecase.png)
+[![LangGraph use case](images/langgraph-usecase.png)](https://youtube.com/clip/UgkxrGPOZuE_L3hrmLhoqTtVewF5MKduMlM-?si=cJiIW39-vmG_nQVF)
 
 **Evaluation**
 - **Ease of Use**: ⭐ Rated the least user-friendly. However, after initial setup, it proves effective despite its complexity and developer-centric design.
@@ -286,12 +286,13 @@ Selecting the right agent framework depends heavily on your specific needs and t
 The insights gathered from the video provide a great foundation for understanding the complexities involved in choosing the right agent technology.
 
 
-For further insights, watch the video: 
+For further insights, watch the full video: 
 
 [![1- CrewAI evaluation](images/thumbnail-crewai.png)](https://youtu.be/1zRyGq08ZcM?si=Mm9VM6_IZKTpZ_1X)
 
- - [2 - LangGraph](insert_video_link)
- - [3 - AutoGen](insert_video_link)
+[![2 - LangGraph evaluation](images/langgraph-thumbnail.png)](https://youtu.be/42TUwgEg94Y?si=Ca9mLfKNWAFn0VCr)
+
+[![3 - AutoGen](insert_video_link)](https://youtu.be/iKM3isuTpiI?si=iHzvcHhLHzeEYEi0)
  - [4 - Final comparison](insert_video_link)
 
 Access the full code on [GitHub](https://github.com/fbellame/agent-comparison/tree/master/stock-analysis)
