@@ -292,10 +292,18 @@ For further insights, watch the full video:
 
 [![2 - LangGraph evaluation](images/langgraph-thumbnail.png)](https://youtu.be/42TUwgEg94Y?si=Ca9mLfKNWAFn0VCr)
 
-[![3 - AutoGen](insert_video_link)](https://youtu.be/iKM3isuTpiI?si=iHzvcHhLHzeEYEi0)
- - [4 - Final comparison](insert_video_link)
+[![3 - AutoGen](images/ag-thumbnail.png)](https://youtu.be/iKM3isuTpiI?si=iHzvcHhLHzeEYEi0)
+
+[![4 - Final comparison](images/final-thumbnail.png)](https://youtu.be/ChTx278XJAM?si=lch2qA3y6xzEJYYu)
 
 Access the full code on [GitHub](https://github.com/fbellame/agent-comparison/tree/master/stock-analysis)
 
 ## More about me
+
+Passionate about Generative AI since the launch of ChatGPT in November 2022, I enthusiastically explore the capabilities of this transformative technology. I blog, speak at conferences, [co-organize a local Generative AI meetup in Montreal](https://www.meetup.com/generative-ai-montreal/), and run a small [YouTube channel](https://www.youtube.com/@faridautomatic) dedicated to these experiments. 
+
+Feel free to connect with me on LinkedIn!
+
+
+[![Farid Bellameche](images/farid.png)](https://www.linkedin.com/in/farid-bellameche-6606332/)
 
