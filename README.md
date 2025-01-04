@@ -140,7 +140,7 @@ To provide a **rating (1-10)** for a stock by combining:
 
 ### CrewAI
 
-![Overview of QAI Framework](images/crewai-logo.png)
+[![Overview of QAI Framework](images/crewai-logo.png)](https://www.crewai.com/)
 
 [CrewAI](https://www.crewai.com/) is a popular open source Agent framework, with more than 23k ⭐ on [gitHub](https://github.com/crewAIInc/crewAI): 
 
@@ -287,7 +287,9 @@ The insights gathered from the video provide a great foundation for understandin
 
 
 For further insights, watch the video: 
- - [1 - CrewAI](insert_video_link)
+
+[![1- CrewAI evaluation](images/thumbnail-crewai.png)](https://youtu.be/1zRyGq08ZcM?si=Mm9VM6_IZKTpZ_1X)
+
  - [2 - LangGraph](insert_video_link)
  - [3 - AutoGen](insert_video_link)
  - [4 - Final comparison](insert_video_link)
