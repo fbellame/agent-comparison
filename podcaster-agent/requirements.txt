@@ -1,0 +1,11 @@
+autogen-agentchat==0.4.0.dev12
+autogen-core==0.4.0.dev12
+autogen-ext==0.4.0.dev12
+azure-identity
+pandas==2.2.3
+Markdown==3.7
+python-dotenv==1.0.1
+openai-whisper==20231117
+ffmpeg-python==0.2.0
+opencv-python
+fastapi

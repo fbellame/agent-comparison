@@ -165,3 +165,6 @@ desktop.ini
 *.iml
 *.iws
 .idea/
+
+**/video
+**/transcripts
