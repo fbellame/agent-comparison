@@ -6,6 +6,7 @@ from dotenv import load_dotenv
 load_dotenv()
 from autogen import ConversableAgent
 from tools.yahoo_finance import yahoo_finance_tool
+from tools.system_tool import read_file, write_file
 import time
 import autogen
 import json
@@ -18,14 +19,6 @@ llm_config = {
 
 start_time = time.time()
 logging_session_id = autogen.runtime_logging.start(config={"dbname": "logs.db"})
-
-def read_file(file_path: str) -> str:
-    with open(file_path, "r") as file:
-        return file.read()
-
-def write_file(file_path: str, content: str) -> None:
-    with open(file_path, "w") as file:
-        file.write(content)
 
 # Let's first define the assistant agent that suggests tool calls.
 assistant = ConversableAgent(
@@ -85,7 +78,7 @@ user_message = f"""
         then summarize the company evaluation and provide a recommendation
         then you give a warren buffet buy recomendation from 0 to 10 (10 is best)
         finally write the result to the file 
-        stock_analysis.txt
+        stock_analysis.md
         expected_output:
         - Pros why Warren Buffett would invest in this company
         - Cons why Warren Buffett wouldn't invest in this company
