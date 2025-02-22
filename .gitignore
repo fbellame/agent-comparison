@@ -168,3 +168,5 @@ desktop.ini
 
 **/video
 **/transcripts
+stock-analysis/autogen-ai-stock-analysis/tools/__pycache__/yahoo_finance.cpython-312.pyc
+stock-analysis/autogen-ai-stock-analysis/logs.db
